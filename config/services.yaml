@@ -1,0 +1,35 @@
+# config/services.yaml
+parameters:
+    uploads_directory: '%kernel.project_dir%/public/images'
+    app.frontend_url: '%env(APP_FRONTEND_URL)%'
+
+services:
+    App\Filter\UserCommandeFilter:
+        arguments:
+            $relations: ['UserCommande'] 
+        tags: ['api_platform.filter']
+
+    App\Filter\CommercantMarcheFilter:
+        arguments:
+            $relations: ['CommercantMarche'] 
+        tags: ['api_platform.filter']
+
+    App\Filter\UserFilter:
+        arguments:
+            $relations: ['user'] 
+        tags: ['api_platform.filter']
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+    App\Security\CustomJWTEncoder:
+        tags:
+            - { name: 'kernel.event_listener', event: 'lexik_jwt_authentication.on_jwt_created', method: 'onJWTCreated' }

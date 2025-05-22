@@ -1,0 +1,7 @@
+framework:
+    mailer:
+        dsn: '%env(MAILER_DSN)%'
+
+    messenger:
+        routing:
+            'Symfony\Component\Mailer\Messenger\SendEmailMessage': null # Envoi d'emails directement au destinataire

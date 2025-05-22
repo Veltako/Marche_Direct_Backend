@@ -1,0 +1,24 @@
+api_platform:
+    title: "MarcheDirect"
+    version: 1.0.0
+    serializer:
+        hydra_prefix: true
+    defaults:
+        attributes:
+            enable_max_depth: true
+        normalization_context:
+            groups: ['read'] 
+        pagination:
+            pagination_client_items_per_page: true
+            enabled: true     
+        stateless: true
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']
+        eager_loading:
+            max_joins: 10000000000  
+    formats:
+        json: ['application/json']
+        jsonmerge: ['application/merge-patch+json']
+        jsonld: ['application/ld+json']
+
+

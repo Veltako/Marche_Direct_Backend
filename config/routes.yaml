@@ -1,0 +1,15 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+    
+api_login_check:
+    path: /api/login_check
+    
+# config/routes.yaml
+search_api:
+    path: /api/search
+    controller: App\Controller\SearchController::search
+    methods: [GET]
+
